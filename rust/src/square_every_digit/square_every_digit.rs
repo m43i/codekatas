@@ -1,13 +1,10 @@
 fn square_digits(num: u64) -> u64 {
     num.to_string()
         .chars()
-        .map(|c| c.to_digit(10).unwrap())
-        .map(|c| c.pow(2))
-        .map(|c| c.to_string())
-        .collect::<Vec<String>>()
-        .join("")
-        .parse::<u64>()
-        .unwrap()
+        .map(|c| c.to_digit(10).expect("Not a digit").pow(2).to_string())
+        .collect::<String>()
+        .parse()
+        .expect("Cant parse u64")
 }
 
 #[cfg(test)]
